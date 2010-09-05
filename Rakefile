@@ -5,13 +5,11 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "word-count-validator"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Makes validating word counts in active_model easy}
+    gem.description = %Q{Provides validates_word_count which lets users validate a string has a minimum / maximum number of words.}
     gem.email = "sutto@sutto.net"
     gem.homepage = "http://github.com/Sutto/word-count-validator"
     gem.authors = ["Darcy Laycock"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

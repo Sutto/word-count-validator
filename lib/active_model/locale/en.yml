@@ -1,0 +1,5 @@
+en:
+  errors:
+    messages:
+      too_few_words: "has %{actual_count} words but requires at least %{expected_count} words"
+      too_many_words: "has %{actual_count} words but requires at most %{expected_count} words"

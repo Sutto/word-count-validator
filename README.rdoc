@@ -1,6 +1,7 @@
 = word-count-validator
 
-Description goes here.
+A simple ActiveModel validator for requiring a model has a word count in a specific range.
+Uses a very basic method for generating the count (scans for \w+)
 
 == Note on Patches/Pull Requests
  
