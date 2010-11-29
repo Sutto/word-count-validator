@@ -24,10 +24,12 @@ module ActiveModel
         # Finally, normalize the min values.
         options[:min] = options[:min].to_i
         options[:max] = options[:max].to_i
+        options[:strip_tags] = true
       end
 
       def validate_each(record, attribute, value)
         min_words, max_words  = options[:min], options[:max]
+        value = ActionController::Base.helpers.strip_tags value if options[:strip_tags]
         count = word_count_for(value)
         if !options[:skip_min] && count < min_words
           record.errors.add attribute, :too_few_words,  options_for(min_words, count)
