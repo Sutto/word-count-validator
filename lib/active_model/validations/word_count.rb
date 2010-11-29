@@ -16,8 +16,8 @@ module ActiveModel
         options[:max] = options.delete(:maximum) if options.has_key?(:maximum)
         options[:max] ||= 100
         options[:min] ||= 0
-        options[:strip_tags] = true
-        options[:strip_punctuation] = true
+        options[:strip_tags] = true unless options.has_key?(:strip_tags)
+        options[:strip_punctuation] = true unless options.has_key(:strip_punctuation)
         if options.has_key?(:in)
           range = options[:in]
           if range.present? && range.respond_to?(:min) && range.respond_to?(:max)
