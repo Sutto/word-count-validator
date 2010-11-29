@@ -7,7 +7,7 @@ Uses a very basic method for generating the count (scans for \w+)
 
 With thanks to the following people:
 
-* "Eric Anderson"[https://github.com/eric1234] - Contributed support for the +:strip_tags+ option and a bunch of bug fixes.
+* Eric Anderson (github)[https://github.com/eric1234] - Contributed support for the +:strip_tags+ option and a bunch of bug fixes.
 
 == Note on Patches/Pull Requests
  
