@@ -47,7 +47,7 @@ module ActiveModel
       end
       
       def options_for(current, expected)
-        base_options.merge :expected_count => expected_count, :actual_count => current
+        base_options.merge :expected_count => expected, :actual_count => current
       end
 
     end
