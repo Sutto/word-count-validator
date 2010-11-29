@@ -38,9 +38,9 @@ module ActiveModel
         value = ActionController::Base.helpers.strip_tags value if options[:strip_tags]
         count = word_count_for(value)
         if !options[:skip_min] && count < min_words
-          record.errors.add attribute, :too_few_words,  options_for(min_words, count)
+          record.errors.add attribute, :too_few_words,  options_for(count, min_words)
         elsif !options[:skip_max] && count > max_words
-          record.errors.add attribute, :too_many_words, options_for(max_words, count)
+          record.errors.add attribute, :too_many_words, options_for(count, max_words)
         end 
       end
 
