@@ -37,7 +37,7 @@ module ActiveModel
       def validate_each(record, attribute, value)
         min_words, max_words  = options[:min].to_i, options[:max].to_i
         value = ActionController::Base.helpers.strip_tags(value).gsub(/&nbsp;|&#160;/i, ' ') if options[:strip_tags]
-        value.gsub! /[.(),;:!?%#$'"_+=\/-]*/, '' if options[:strip_punctuation]
+        value.gsub! /[.(),;:!?%#\$'"_+=\/-]*/, '' if options[:strip_punctuation]
         count = word_count_for(value)
         if !options[:skip_min] && count < min_words
           record.errors.add attribute, :too_few_words,  options_for(count, min_words)
