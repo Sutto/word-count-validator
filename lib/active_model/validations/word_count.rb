@@ -30,13 +30,14 @@ module ActiveModel
 
       def check_validity!
         raise ArgumentError, "You must provide a valid range for the number of words e.g. 2..100" if options.has_key?(:in)
-        raise ArgumentError, "The min value must respond to to_i" unless options[:min].respond_to?(:to_i)
-        raise ArgumentError, "The max value must respond to to_i" unless options[:max].respond_to?(:to_i)
+        raise ArgumentError, "The min value must respond to to_i or call" unless options[:min].respond_to?(:to_i) || options[:min].respond_to?(:call)
+        raise ArgumentError, "The max value must respond to to_i or call" unless options[:max].respond_to?(:to_i) || options[:max].respond_to?(:call)
       end
 
       def validate_each(record, attribute, value)
-        min_words, max_words  = options[:min].to_i, options[:max].to_i
-        value = ActionController::Base.helpers.strip_tags(value).gsub(/&nbsp;|&#160;/i, ' ') if options[:strip_tags]
+        min_words = options[:min].respond_to?(:call) ? options[:min][record, attribute, value] : options[:min].to_i
+        max_words = options[:max].respond_to?(:call) ? options[:max][record, attribute, value] : options[:max].to_i
+        value = ActionController::Base.helpers.strip_tags(value || '').gsub(/&nbsp;|&#160;/i, ' ') if options[:strip_tags]
         value.gsub! /[.(),;:!?%#\$'"_+=\/-]*/, '' if options[:strip_punctuation]
         count = word_count_for(value)
         if !options[:skip_min] && count < min_words
