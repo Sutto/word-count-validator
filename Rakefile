@@ -9,7 +9,7 @@ begin
     gem.description = %Q{Provides validates_word_count which lets users validate a string has a minimum / maximum number of words.}
     gem.email = "sutto@sutto.net"
     gem.homepage = "http://github.com/Sutto/word-count-validator"
-    gem.authors = ["Darcy Laycock"]
+    gem.authors = ["Darcy Laycock", "Eric Anderson"]
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
