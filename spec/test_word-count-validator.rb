@@ -4,7 +4,7 @@ require 'active_model'
 
 class Validatable
   include ActiveModel::Validations
-  validates_word_count :text, {min: 5, max: 7}
+  validates_word_count :text, {:min => 5, :max => 7}
 end
 
 describe ActiveModel::Validations::WordCountValidator do

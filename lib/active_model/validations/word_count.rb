@@ -50,7 +50,12 @@ module ActiveModel
       end
 
       def word_count_for(value)
-        value.to_s.scan(/\p{Word}+/).size
+        if RUBY_VERSION =~ /1\.[0-8]\.*/
+          regexp = /\w+/u
+        else
+          regexp = /\p{Word}+/
+        end
+        value.to_s.scan(regexp).size
       end
       
       def base_options
