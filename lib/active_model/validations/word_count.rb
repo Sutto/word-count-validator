@@ -1,4 +1,6 @@
+# -*- encoding : utf-8 -*-
 require 'active_model'
+require 'action_controller'
 require 'active_support/i18n'
 I18n.load_path << File.expand_path(File.dirname(__FILE__) + "/../locale/en.yml")
 
@@ -48,7 +50,12 @@ module ActiveModel
       end
 
       def word_count_for(value)
-        value.to_s.scan(/\w+/).size
+        if RUBY_VERSION =~ /1\.[0-8]\.*/
+          regexp = /\w+/u
+        else
+          regexp = /\p{Word}+/
+        end
+        value.to_s.scan(regexp).size
       end
       
       def base_options
